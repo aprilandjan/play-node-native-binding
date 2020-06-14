@@ -1,0 +1,19 @@
+build/
+node_modules/
+Debug/
+Release/
+*.lock
+*.log
+package-lock.json
+npm-debug.log*
+
+.idea/
+# .vscode/
+.vscode/c_cpp_properties.json
+.DS_Store
+
+# msvc building things
+*.exe
+*.ilk
+*.pdb
+*.dll
