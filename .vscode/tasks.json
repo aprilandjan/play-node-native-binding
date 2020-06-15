@@ -1,49 +1,49 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "C/C++: cl.exe build dll",
-			"command": "cl.exe",
-			// https://stackoverflow.com/questions/1130479/how-to-build-a-dll-from-the-command-line-in-windows-using-msvc
-			"args": [
-				"/LD",
-				"/Fe:",
-				"${fileDirname}\\${fileBasenameNoExtension}.dll",
-				"${file}"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"problemMatcher": [
-				"$msCompile"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		// {
-		// 	"type": "shell",
-		// 	"label": "C/C++: cl.exe build active file",
-		// 	"command": "cl.exe",
-		// 	"args": [
-		// 		"/Zi",
-		// 		"/EHsc",
-		// 		"/Fe:",
-		// 		"${fileDirname}\\${fileBasenameNoExtension}.exe",
-		// 		"${file}"
-		// 	],
-		// 	"options": {
-		// 		"cwd": "${workspaceFolder}"
-		// 	},
-		// 	"problemMatcher": [
-		// 		"$msCompile"
-		// 	],
-		// 	"group": {
-		// 		"kind": "build",
-		// 		"isDefault": true
-		// 	}
-		// }
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    // {
+    //   "type": "shell",
+    //   "label": "C/C++: clang++ build active file",
+    //   "command": "/usr/bin/clang++",
+    //   "args": [
+    //     "-g",
+    //     "${file}",
+    //     "-o",
+    //     "${fileDirname}/${fileBasenameNoExtension}"
+    //   ],
+    //   "options": {
+    //     "cwd": "${workspaceFolder}"
+    //   },
+    //   "problemMatcher": [
+    //     "$gcc"
+    //   ],
+    //   "group": {
+    //     "kind": "build",
+    //     "isDefault": true
+    //   }
+    // }
+  ]
 }

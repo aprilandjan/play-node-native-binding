@@ -17,3 +17,6 @@ npm-debug.log*
 *.ilk
 *.pdb
 *.dll
+
+# clang building things
+*.dSYM
