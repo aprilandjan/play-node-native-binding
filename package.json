@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "main": "entry.js",
   "scripts": {
-    "postinstall": "node-gyp configure && node-gyp build",
+    "postinstall": "node-gyp rebuild",
     "build": "node-gyp rebuild",
     "test": "node ./test.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "node-gyp": "^7.0.0",
-    "node-addon-api": "^3.0.0"
+    "bindings": "^1.5.0",
+    "node-addon-api": "^3.0.0",
+    "node-gyp": "^7.0.0"
   }
 }
