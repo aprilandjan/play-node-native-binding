@@ -1,9 +1,10 @@
 {
   "name": "play-node-native-binding",
   "version": "1.0.0",
+  "main": "entry.js",
   "scripts": {
-    "postinstall": "node-gyp build",
-    "build": "node-gyp build",
+    "postinstall": "node-gyp configure && node-gyp build",
+    "build": "node-gyp rebuild",
     "test": "node ./test.js"
   },
   "dependencies": {

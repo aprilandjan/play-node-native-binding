@@ -7,9 +7,13 @@
 Napi::String _hello(const Napi::CallbackInfo & info) {
     Napi::Env env = info.Env();
 
+    //  index `info` for function arguments
+    //  cast argument into std::string type
+    std::string name = (std::string) info[0].ToString();
+
     //  call function defined in other files
     //  make the params hard-coded for now
-    std::string result = hello("MAGA");
+    std::string result = hello(name);
 
     //  return a new `Napi::String` value
     return Napi::String::New(env, result);

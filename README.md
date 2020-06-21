@@ -77,3 +77,4 @@ Then in `./build/Release` directory, we got the `binding.node` file as node spec
 - <https://itnext.io/a-simple-guide-to-load-c-c-code-into-node-js-javascript-applications-3fcccf54fd32>
 - <https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference>
 - <https://stackoverflow.com/questions/61730307/node-js-native-addons-where-is-node-api-h-located>
+- <https://github.com/nodejs/node-addon-api/blob/master/doc/callbackinfo.md>
