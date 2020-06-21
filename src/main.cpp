@@ -1,21 +1,31 @@
-#include <iostream>
-#include <dlfcn.h> // https://pubs.opengroup.org/onlinepubs/7908799/xsh/dlfcn.h.html
-#include "add.h"
+// this `napi.h` is provided by node-api-addon module
+#include <napi.h>
+#include <string>
+#include "hello.h"
 
-int main() {
-    
-    // declaration (template) of add function
-    // function typedef: http://www.iso-9899.info/wiki/Typedef_Function_Type
-    typedef int add_t(int, int);
-    
-    // load shared library
-    // https://pubs.opengroup.org/onlinepubs/7908799/xsh/dlopen.html
-    void *handler = dlopen("./add.dll", RTLD_LAZY);
-  
-    // extract `add` symbol (pointer) and convert it to function pointer
-    // https://pubs.opengroup.org/onlinepubs/7908799/xsh/dlsym.html
-    add_t *add = (add_t*) dlsym( handler, "add" );
-    
-    // execute function
-    std::cout << (*add)(5, 2) << std::endl;
+//  The intermediate transformation for the original native function code
+Napi::String _hello(const Napi::CallbackInfo & info) {
+    Napi::Env env = info.Env();
+
+    //  call function defined in other files
+    //  make the params hard-coded for now
+    std::string result = hello("MAGA");
+
+    //  return a new `Napi::String` value
+    return Napi::String::New(env, result);
 }
+
+//  callback method when module is registered with node.js
+Napi::Object _init(Napi::Env env, Napi::Object exports) {
+    //  define property for `exports` object
+    exports.Set(
+        Napi::String::New(env, "hello"), // property name: "hello",
+        Napi::Function::New(env, _hello) // property value: the function
+    );
+
+    //  always return this `exports` object
+    return exports;
+}
+
+//  the declaration macro-function of node module
+NODE_API_MODULE(hello, _init)

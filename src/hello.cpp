@@ -1,16 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <string>
 
-using namespace std;
-
-int main()
+// just output hello
+std::string hello(std::string name)
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
+    return "hello, " + name + "!";
 }
