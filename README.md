@@ -70,6 +70,11 @@ Then in `./build/Release` directory, we got the `binding.node` file as node spec
 
 We can use [node-bindings](https://www.npmjs.com/package/bindings) to help `require()` the produced native addon `.node` file.
 
+## TODO
+
+- [ ] use [nan](https://www.npmjs.com/package/nan) to create a native addon
+- [ ] create a dynamic link library and call it through native addon
+
 ## references
 
 - <https://nodejs.org/api/addons.html>
