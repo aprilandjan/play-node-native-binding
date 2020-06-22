@@ -13,7 +13,7 @@ It will be good if vscode supports c/cpp files, so we need to configure it at th
 `node-gyp` is needed to generate the boilerplate code, and build native addons:
 
 - install [windows-build-tools](https://github.com/felixrieseberg/windows-build-tools) if using windows, for example:
-    
+
     ```
     yarn global add windows-build-tools --python-mirror=https://npm.taobao.org/mirrors/python/
     ```
@@ -24,7 +24,7 @@ It will be good if vscode supports c/cpp files, so we need to configure it at th
 
 ## gyp - generate your project
 
-Time to start some coding. Create C files and make some functions, for example: 
+Time to start some coding. Create C files and make some functions, for example:
 
 ```cpp
 #include <string>
@@ -67,6 +67,8 @@ node-gyp build
 ```
 
 Then in `./build/Release` directory, we got the `binding.node` file as node specific dynamic linking library module, which is ready for use like a normal node module.
+
+We can use [node-bindings](https://www.npmjs.com/package/bindings) to help `require()` the produced native addon `.node` file.
 
 ## references
 
