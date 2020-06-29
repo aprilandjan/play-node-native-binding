@@ -74,6 +74,7 @@ We can use [node-bindings](https://www.npmjs.com/package/bindings) to help `requ
 
 - [ ] use [nan](https://www.npmjs.com/package/nan) to create a native addon
 - [ ] create a dynamic link library and call it through native addon
+- [ ] build electron native module
 
 ## references
 
@@ -85,3 +86,7 @@ We can use [node-bindings](https://www.npmjs.com/package/bindings) to help `requ
 - <https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference>
 - <https://stackoverflow.com/questions/61730307/node-js-native-addons-where-is-node-api-h-located>
 - <https://github.com/nodejs/node-addon-api/blob/master/doc/callbackinfo.md>
+- <https://iweiyun.github.io/2019/01/04/node-cpp-addon/>
+- <https://github.com/nodejs/node-gyp/issues/1676>
+- <https://github.com/nodejs/node-gyp/issues/682>
+- <https://gyp.gsrc.io/docs/UserDocumentation.md>
