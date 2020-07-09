@@ -58,7 +58,7 @@ This module provides `napi.h` while writing intermediate codes. If we want `vsco
 
 Now we are ready to write the intermediate codes. It is very likely to write a `module.exports` in C++, using `Napi` namespace things. The detailed implementations are in [main.cpp](./src/main.cpp).
 
-## Building module
+## build module
 
 After all codes are prepared, we are ready to build code into native node addons. using `node-gyp`:
 
@@ -70,11 +70,19 @@ Then in `./build/Release` directory, we got the `binding.node` file as node spec
 
 We can use [node-bindings](https://www.npmjs.com/package/bindings) to help `require()` the produced native addon `.node` file.
 
-## TODO
+## build for electron
 
-- [ ] use [nan](https://www.npmjs.com/package/nan) to create a native addon
+It is easy to build a native binding for electron:
+
+```bash
+node-gyp rebuild --target=v<version> --dist-url=https://atom.io/download/electron
+```
+
+Basically it is the same as building for specific node version.
+
+## Todo
+
 - [ ] create a dynamic link library and call it through native addon
-- [ ] build electron native module
 
 ## references
 
