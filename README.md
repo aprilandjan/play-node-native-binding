@@ -14,7 +14,7 @@ It will be good if vscode supports c/cpp files, so we need to configure it at th
 
 - install [windows-build-tools](https://github.com/felixrieseberg/windows-build-tools) if using windows, for example:
 
-    ```
+    ```bash
     yarn global add windows-build-tools --python-mirror=https://npm.taobao.org/mirrors/python/
     ```
 
@@ -79,6 +79,14 @@ node-gyp rebuild --target=v<version> --dist-url=https://atom.io/download/electro
 ```
 
 Basically it is the same as building for specific node version.
+
+## What's more
+
+Once there's a `binding.gyp` in the module root directory, the `npm`(and `yarn`) will automatically consider it as a native module, and run `node-gyp rebuild` everything after its installation. This is sometimes annoying, and seems there's no direct way to disable this behavior.
+
+To bypass that, we can rename the `binding.gyp` as something else. But if we do that, `node-gyp` will not able to locate it, because this config file is [hardcoded](https://github.com/nodejs/node-gyp/blob/master/lib/configure.js#L332). What's more, there's no way to programmatically call `node-gyp` directly. These combination makes controlling it becomes really disgusting.
+
+So if we really want to archive that, we had to rename the `binding.gyp` into something else, and write script to create the file back and then start a child process to run `node-gyp`.
 
 ## Todo
 
