@@ -91,6 +91,7 @@ So if we really want to archive that, we had to rename the `binding.gyp` into so
 ## Todo
 
 - [ ] create a dynamic link library and call it through native addon
+- [ ] build for electron, packing & signing included
 
 ## references
 
