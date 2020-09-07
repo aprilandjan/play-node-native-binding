@@ -48,11 +48,58 @@ This module provides `napi.h` while writing intermediate codes. If we want `vsco
 
 ```json
 {
-    "includePath": [
-        "${workspaceFolder}/src/**",
-        "${workspaceFolder}/node_modules/node-addon-api/**",
-        "C:/Users/<user>/.node-gyp/<version>/include/node/**"
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/node_modules/node-addon-api/**",
+                "${HOME}/.node-gyp/<version>/include/node/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
     ],
+    "version": 4
+}
+```
+
+Besides, if we want to use `task.json` to define the build task, we need to add corresponding args, too. For example(in mac, build with [clang](https://gist.github.com/masuidrive/5231110))
+
+```json
+{
+    "tasks": [
+    {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "-I",
+        "${env:HOME}/.node-gyp/<version>/include/node"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }]
 }
 ```
 
