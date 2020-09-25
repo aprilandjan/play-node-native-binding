@@ -1,7 +1,10 @@
+#ifndef OC_RUN_LOOP_CONTEXT_H
+#define OC_RUN_LOOP_CONTEXT_H
+
 #include <future>
 #include <vector>
 #include <memory> // provide 'std::share_ptr'
-//#include <node.h> // provide 'v8' namespace
+#include "./V8TaskService.h"
 
 /** RunLoop 执行频率 */
 enum RunLoopFrequencyLevel {
@@ -16,6 +19,7 @@ class OCRunLoopContext {
     ~OCRunLoopContext();
     /** 设置 RunLoop 执行的频率 */
     void updateRunLoopFrequencyLevel(RunLoopFrequencyLevel level);
+    void appRun();
   private:
     void initRunLoopContext();
     int delayForFrequencyLevel(RunLoopFrequencyLevel level);
@@ -26,8 +30,8 @@ class OCRunLoopContext {
     std::atomic<bool> _finish;
     // change frequency level
     std::atomic<RunLoopFrequencyLevel> _level;
-    // static configuration & instance
-    // static std::shared_ptr<V8TaskService> _service;
     static std::vector<int> delays;
+    static std::shared_ptr<V8TaskService> service;
 };
 
+#endif //OC_RUN_LOOP_CONTEXT_H

@@ -5,6 +5,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <list>
+#include "./Screen.h"
 #include "./OCRunLoopContext.h"
 
 //===== run without mutex =====
@@ -137,7 +138,8 @@ std::string hello(std::string name)
     // run_without_mutex();
     // run_with_mutex();
     // run_producer_and_consumer();
-    run_oc_runloop();
+    // run_oc_runloop();
+    listScreens();
 
     return "Hello, " + name + "!";
 }

@@ -5,11 +5,15 @@
       "sources": [
         "./src/hello.cpp",
         "./src/main.cpp",
+        "./src/Screen.mm",
         "./src/OCRunLoopContext.mm",
+        "./src/V8TaskService.mm",
       ],
       "link_settings": {
         "libraries": [
-          "-framework Foundation"
+          "-framework AppKit",
+          "-framework IOKit",
+          "-framework Foundation",
         ]
       },
       "include_dirs": [
